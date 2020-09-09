@@ -19,9 +19,12 @@ public class Titulo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String descricao;
+
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
+
 	private BigDecimal valor;
+
 	@Enumerated(EnumType.STRING)
 	private StatusTitulo status;
 

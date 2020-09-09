@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import edu.ifmt.cobrancaifmt.model.Titulo;
 import edu.ifmt.cobrancaifmt.repository.Titulos;
 
 @Controller
@@ -20,8 +20,7 @@ class TituloController {
 	private Titulos titulos;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Titulos titulo) {
-
+	public String salvar(Titulo titulo) {
 		titulos.save(titulo);
 		return "CadastroTitulo";
 
