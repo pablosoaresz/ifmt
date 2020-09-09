@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.ifmt.cobrancaifmt.Titulos;
-import edu.ifmt.cobrancaifmt.model.Titulo;
+import edu.ifmt.cobrancaifmt.repository.Titulos;
 
 @Controller
 @RequestMapping("/titulos")
@@ -21,11 +20,11 @@ class TituloController {
 	private Titulos titulos;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void salvar(Titulos titulo) {
+	public String salvar(Titulos titulo) {
 
-		
 		titulos.save(titulo);
 		return "CadastroTitulo";
+
 	}
 
 }
