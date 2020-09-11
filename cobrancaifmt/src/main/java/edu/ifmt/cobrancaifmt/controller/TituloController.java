@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import edu.ifmt.cobrancaifmt.model.StatusTitulo;
 import edu.ifmt.cobrancaifmt.model.Titulo;
 import edu.ifmt.cobrancaifmt.repository.Titulos;
 
@@ -12,20 +15,22 @@ import edu.ifmt.cobrancaifmt.repository.Titulos;
 class TituloController {
 
 	@RequestMapping("/novo")
-	public String novo() {
-		return "CadastroTitulo";
+	public ModelAndView novo() {
+		ModelAndView mv = new ModelAndView("CadastroTitulo");
+		mv.addObject("todosStatusTitulo", StatusTitulo.values());
+		return mv;
 	}
 
 	@Autowired
 	private Titulos titulos;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Titulo titulo) {
+	public ModelAndView salvar(Titulo titulo) {
 
 		titulos.save(titulo);
-
-		return "CadastroTitulo";
-
+		ModelAndView mv = new ModelAndView("CadastoTitulo");
+		mv.addObject("mensagem", "Foi salvo com sucesso!");
+		return mv;
 	}
 
 }
