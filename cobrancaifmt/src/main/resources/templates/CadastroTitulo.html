@@ -4,7 +4,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cobrança IFMT by Pablo Bachega Soares</title>
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-primary">
@@ -14,7 +14,7 @@
 
 	<form action="/titulos" method="POST">
 
-		<div class="alertm alert-success alert-dismissible" role="alert"
+		<div class="alert alert-success alert-dismissible" role="alert"
 			th:if="${!#strings.isEmpty(mensagem)}">
 			<button type="button" class="close" data-dismiss="alert"></button>
 			<span th:text="${mensagem}">Salvo com sucesso!</span>
@@ -50,8 +50,8 @@
 					<label for="status" class="col-sm-2 col-form-label">Status</label>
 					<div class="col-sm-2">
 						<select class="form-control" id="status" name="status">
-							<option value="PENDENTE">Pendente</option>
-							<option value="RECEBIDO">Recebido</option>
+							<option th:each="status : ${todosStatusTitulo}"
+								th:value="${status}" th:text="${status.descricao}"></option>
 						</select>
 					</div>
 				</div>
