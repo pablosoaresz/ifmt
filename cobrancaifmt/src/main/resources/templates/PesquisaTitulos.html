@@ -10,13 +10,18 @@
 
 <body>
 	<section layout:fragment="conteudo">
-	
-	<div th:replace="Mensagem"></div>
-	
+
+		<div th:replace="Mensagem"></div>
+
 		<div class="card">
 			<div class="card-header tux-titulo-panel">
 				<span class="tux-titulo-panel">Pesquisa</span>
+
 			</div>
+			<div class="card-header tux-titulo-panel">
+				<span class="tux-titulo-panel"><a href="/titulos/novo">Novo</a></span>
+			</div>
+
 			<div class="card-body">
 				<table class="table table-bordered table-striped">
 					<thead>
@@ -43,14 +48,16 @@
 								th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
 									class="material-icons">edit</i>
 							</a>
-								<button type="button" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-									th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" 
+								<button type="button" data-toggle="modal"
+									data-target="#confirmacaoExclusaoModal"
+									th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
 									class="btn btn-link" title="Excluir">
 									<i class="material-icons">delete</i>
 								</button></td>
 						</tr>
 						<tr>
-							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum registro encontrado.</td>
+							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
+								registro encontrado.</td>
 						</tr>
 					</tbody>
 				</table>
