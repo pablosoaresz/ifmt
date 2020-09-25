@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import edu.ifmt.cobrancaifmt.model.StatusTitulo;
 import edu.ifmt.cobrancaifmt.model.Titulo;
 import edu.ifmt.cobrancaifmt.repository.Titulos;
@@ -35,14 +38,14 @@ class TituloController {
 	private Titulos titulos;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Titulo titulo, Errors errors) {
-		ModelAndView mv = new ModelAndView("CadastroTitulo");
+	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
-			return mv;
+			return "CadastroTitulo";
+
 		}
 		titulos.save(titulo);
-		mv.addObject("mensagem", "Foi salvo com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Foi salvo com sucesso!");
+		return "redirect:/titulos/novo";
 
 	}
 
@@ -53,4 +56,20 @@ class TituloController {
 		mv.addObject("titulos", todosTitulos);
 		return mv;
 	}
+
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
+		ModelAndView mv = new ModelAndView("CadastroTitulo");
+		mv.addObject(titulo);
+		return mv;
+	}
+
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		titulos.deleteById(codigo);
+		attributes.addFlashAttribute("mensagem", "Excluido com sucesso!");
+		return "redirect:/titulos";
+
+	}
+
 }
