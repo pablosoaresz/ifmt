@@ -21,6 +21,9 @@ import edu.ifmt.vendaifmt.repository.Vendas;
 @RequestMapping("/vendas")
 class VendaController {
 
+	@Autowired
+	private Vendas vendas;
+
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("CadastroVenda");
@@ -32,9 +35,6 @@ class VendaController {
 	public List<StatusVenda> todosStatusVenda() {
 		return Arrays.asList(StatusVenda.values());
 	}
-
-	@Autowired
-	private Vendas vendas;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Venda venda, Errors errors, RedirectAttributes attributes) {
