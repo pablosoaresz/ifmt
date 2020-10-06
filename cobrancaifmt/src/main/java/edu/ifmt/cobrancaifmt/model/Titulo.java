@@ -86,11 +86,11 @@ public class Titulo {
 		this.descricao = descricao;
 	}
 
-	public Date getdataVencimento() {
+	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setdataVencimento(Date dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
