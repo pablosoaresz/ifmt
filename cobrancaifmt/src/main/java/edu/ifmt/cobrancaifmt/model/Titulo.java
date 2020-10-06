@@ -33,7 +33,7 @@ public class Titulo {
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	private Date dataVenda;
+	private Date dataVencimento;
 	
 	@NotNull(message = "O valor não pode ser nulo")
 	@DecimalMin(value = "0.01", message = "O valor não pode ser menor que 0,01")
@@ -86,12 +86,12 @@ public class Titulo {
 		this.descricao = descricao;
 	}
 
-	public Date getDataVenda() {
-		return dataVenda;
+	public Date getdataVencimento() {
+		return dataVencimento;
 	}
 
-	public void setDataVenda(Date dataVenda) {
-		this.dataVenda = dataVenda;
+	public void setdataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
 	}
 
 	public BigDecimal getValor() {
