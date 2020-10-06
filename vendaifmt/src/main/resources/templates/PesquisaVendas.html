@@ -28,7 +28,7 @@
 						<tr>
 							<th scope="col" class="text-center">#</th>
 							<th scope="col">Descrição</th>
-							<th scope="col" class="text-left">Data de Vencimento</th>
+							<th scope="col" class="text-left">Data da Venda</th>
 							<th scope="col" class="text-right">Valor</th>
 							<th scope="col" class="text-center">Status</th>
 							<th scope="col"></th>
@@ -38,7 +38,7 @@
 						<tr scope="row" th:each="venda : ${vendas}">
 							<td class="text-center" th:text="${venda.codigo}"></td>
 							<td th:text="${venda.descricao}"></td>
-							<td class="text-center" th:text="${{venda.dataVencimento}}"></td>
+							<td class="text-center" th:text="${{venda.dataVenda}}"></td>
 							<td class="text-right" th:text="|R$ ${{venda.valor}}|"></td>
 							<td class="text-center"><span class="badge"
 								th:text="${venda.status.descricao}"
